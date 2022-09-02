@@ -14,6 +14,11 @@ const App = () => {
     alert(result);
   }
 
+  const handlerCaculateClearButton = () => {
+    setHightField(0);
+    setWeightField(0);
+  }
+
   return (
     <div className={styles.main}>
       <header>
@@ -39,6 +44,10 @@ const App = () => {
             value={weightField > 0 ? weightField : ''}
             onChange={(v) => setWeightField(parseFloat(v.target.value))}
           />
+
+          <button onClick={handlerCaculateClearButton}>
+            Limpar
+          </button>
 
           {(hightField > 0 && weightField > 0) && <button onClick={handlerCaculateButton}>
             Calcular
