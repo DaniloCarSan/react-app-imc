@@ -83,3 +83,8 @@ body {
     grid-template-columns: repeat(2, 1fr);
     grid-gap: 10px;
 }
+
+.container .rightSide .rightBig {
+    flex: 1;
+    display: flex;
+}

@@ -3,22 +3,23 @@
 import { useState } from 'react';
 import styles from './App.module.css'
 import poweredImage from './assets/powered.png'
-import { lavels } from './helpers/imc';
+import { lavels, level, caculateIMCLevel } from './helpers/imc';
 import GridItem from './components/GridItem';
 
 const App = () => {
 
   const [hightField, setHightField] = useState<number>(0);
   const [weightField, setWeightField] = useState<number>(0);
+  const [toShow, setToShow] = useState<level | null>(null);
 
   const handlerCaculateButton = () => {
-    const result = weightField / Math.pow(hightField, 2);
-    alert(result);
+    setToShow(caculateIMCLevel(weightField, hightField));
   }
 
   const handlerCaculateClearButton = () => {
     setHightField(0);
     setWeightField(0);
+    setToShow(null);
   }
 
   return (
@@ -57,9 +58,17 @@ const App = () => {
 
         </div>
         <div className={styles.rightSide}>
-          <div className={styles.grid}>
-            {lavels.map((item, key) => <GridItem key={key} item={item} />)}
-          </div>
+          {!toShow &&
+            <div className={styles.grid}>
+              {lavels.map((item, key) => <GridItem key={key} item={item} />)}
+            </div>
+          }
+          {toShow &&
+            <div className={styles.rightBig}>
+              <div className={styles.rightArrow}></div>
+              <GridItem item={toShow} />
+            </div>
+          }
         </div>
       </div>
     </div>
