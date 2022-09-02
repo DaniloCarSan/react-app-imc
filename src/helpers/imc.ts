@@ -10,7 +10,6 @@ export const lavels: level[] = [
     { title: "Normal", color: '#0ead69', icon: "up", imc: [18.5, 24.9] },
     { title: "Sobrepeso", color: '#e2b039', icon: "down", imc: [25, 29.9] },
     { title: "Obesidade", color: '#c3423f', icon: "down", imc: [30, 39.9] },
-    { title: "Obesidade Grave", color: '#e74c3c', icon: "down", imc: [40, 100] },
 ];
 
 export const caculateIMC = (peso: number, altura: number) => (peso / Math.pow(altura, 2));

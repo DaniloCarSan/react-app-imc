@@ -3,6 +3,8 @@
 import { useState } from 'react';
 import styles from './App.module.css'
 import poweredImage from './assets/powered.png'
+import { lavels } from './helpers/imc';
+import GridItem from './components/GridItem';
 
 const App = () => {
 
@@ -55,7 +57,9 @@ const App = () => {
 
         </div>
         <div className={styles.rightSide}>
-          ...
+          <div className={styles.grid}>
+            {lavels.map((item, key) => <GridItem key={key} item={item} />)}
+          </div>
         </div>
       </div>
     </div>
