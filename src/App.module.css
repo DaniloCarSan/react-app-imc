@@ -27,6 +27,44 @@ body {
     padding: 10px;
 }
 
+.container .leftSide h1 {
+    margin: 0;
+    font-size: 40px;
+    color: #3a4b5c;
+    text-transform: uppercase;
+}
+
+.container .leftSide p {
+    font-size: 16px;
+    margin-bottom: 40px;
+    color: #6a7d8d;
+}
+
+.container .leftSide input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+.container .leftSide button {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #3a4b5c;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+
+.container .leftSide button:hover {
+    background-color: #2a3b4c;
+}
+
 .container .rightSide {
     flex: 1;
     margin-left: 40px;
