@@ -16,6 +16,9 @@ export const caculateIMC = (peso: number, altura: number) => (peso / Math.pow(al
 
 export const getIMCLevel = (imc: number) => {
     const level = lavels.find((level) => imc >= level.imc[0] && imc <= level.imc[1]);
+    if (level === undefined) {
+        return null;
+    }
     return level;
 }
 

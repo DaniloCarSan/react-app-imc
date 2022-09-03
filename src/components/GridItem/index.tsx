@@ -5,9 +5,10 @@ import downImage from '../../assets/down.png';
 
 type Props = {
     item: level;
+    yourImc?: number | null;
 }
 
-const GridItem = ({ item }: Props) => {
+const GridItem = ({ item, yourImc }: Props) => {
     return (
         <div className={styles.main} style={{ backgroundColor: item.color }}>
             <div className={styles.gridIcon}>
@@ -15,9 +16,9 @@ const GridItem = ({ item }: Props) => {
             </div>
             <div className={styles.gridTitle}>{item.title}</div>
 
-            {item.yourImc &&
+            {yourImc &&
                 <div className={styles.yourImc}>
-                    Seu IMC: <b>{item.yourImc.toFixed(2)}</b> kg/m²
+                    Seu IMC: <b>{yourImc.toFixed(2)}</b> kg/m²
                 </div>
             }
 

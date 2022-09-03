@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import styles from './App.module.css'
 import poweredImage from './assets/powered.png'
-import { lavels, level, caculateIMCLevel } from './helpers/imc';
+import { lavels, level, caculateIMC, getIMCLevel } from './helpers/imc';
 import GridItem from './components/GridItem';
 
 const App = () => {
@@ -11,15 +11,20 @@ const App = () => {
   const [hightField, setHightField] = useState<number>(0);
   const [weightField, setWeightField] = useState<number>(0);
   const [toShow, setToShow] = useState<level | null>(null);
+  const [imc, setImc] = useState<number | null>(null);
 
   const handlerCaculateButton = () => {
-    setToShow(caculateIMCLevel(weightField, hightField));
+    var i = caculateIMC(weightField, hightField);
+    var l = getIMCLevel(i);
+    setImc(i);
+    setToShow(l);
   }
 
   const handlerCaculateClearButton = () => {
     setHightField(0);
     setWeightField(0);
     setToShow(null);
+    setImc(null);
   }
 
   return (
@@ -39,6 +44,7 @@ const App = () => {
             type="number"
             value={hightField > 0 ? hightField : ''}
             onChange={(v) => setHightField(parseFloat(v.target.value))}
+            disabled={imc !== null}
           />
 
           <input
@@ -46,13 +52,14 @@ const App = () => {
             placeholder="Digite seu peso em quilogramas"
             value={weightField > 0 ? weightField : ''}
             onChange={(v) => setWeightField(parseFloat(v.target.value))}
+            disabled={imc !== null}
           />
 
-          <button onClick={handlerCaculateClearButton}>
+          {imc != null && <button onClick={handlerCaculateClearButton}>
             Limpar
-          </button>
+          </button>}
 
-          {(hightField > 0 && weightField > 0) && <button onClick={handlerCaculateButton}>
+          {(hightField > 0 && weightField > 0) && imc == null && <button onClick={handlerCaculateButton}>
             Calcular
           </button>}
 
@@ -65,8 +72,7 @@ const App = () => {
           }
           {toShow &&
             <div className={styles.rightBig}>
-              <div className={styles.rightArrow}></div>
-              <GridItem item={toShow} />
+              <GridItem item={toShow} yourImc={imc} />
             </div>
           }
         </div>
