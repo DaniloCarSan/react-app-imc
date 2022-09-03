@@ -88,3 +88,52 @@ body {
     flex: 1;
     display: flex;
 }
+
+@media screen and (max-width: 770px) {
+    .headerContainer {
+        margin: 20px;
+    }
+
+    .container {
+        flex-direction: column;
+    }
+
+    .container .leftSide {
+        margin-right: 0;
+    }
+
+    .container .rightSide {
+        margin-left: 0;
+    }
+
+}
+
+@media screen and (max-width: 500px) {
+    .headerContainer img {
+        width: 150px;
+    }
+
+    .container .leftSide h1 {
+        font-size: 30px;
+    }
+
+    .container .leftSide p {
+        font-size: 14px;
+    }
+
+    .container .leftSide input {
+        font-size: 14px;
+    }
+
+    .container .leftSide button {
+        font-size: 14px;
+    }
+
+    .container .rightSide .grid {
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    .container .rightSide .rightBig {
+        flex-direction: column;
+    }
+}
